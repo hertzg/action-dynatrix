@@ -1,0 +1,20 @@
+name: "dynamic-matrix"
+description: "Finer control over build matrix generation"
+author: "George Kotchlamazashvili <gerogedot@gmail.com>"
+
+branding:
+  color: "green"
+  icon: "check-circle"
+
+inputs:
+  file:
+    required: true
+    description: "Path to matrix.yml"
+
+outputs:
+  matrices:
+    description: "Path to custom matrix path"
+
+runs:
+  using: node12
+  main: dist/index.js

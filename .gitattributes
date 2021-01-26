@@ -1,0 +1,9 @@
+# .gitattributes
+* text=auto
+* text eol=lf
+*.zip binary
+
+# GitHub Linguist Override
+.dist/** linguist-generated
+.yarn/** linguist-vendored
+.pnp.js linguist-generated

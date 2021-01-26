@@ -1,0 +1,6 @@
+{
+  "extends": "@tsconfig/node12",
+  "compilerOptions": {
+    "rootDir": "./src"
+  }
+}

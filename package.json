@@ -1,0 +1,34 @@
+{
+  "name": "action-dynamic-matrix",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "George Kotchlamazashvili <georgedot@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ncc run ./src/index.ts",
+    "build:ncc": "ncc build ./src/index.ts --no-cache"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "ael": "^1.0.1",
+    "decoders": "^1.23.3",
+    "jexl": "^2.3.0",
+    "js-yaml": "^4.0.0",
+    "lodash": "^4.17.20",
+    "node-fetch": "^2.6.1",
+    "semver": "^7.3.4"
+  },
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.7",
+    "@types/jexl": "^2.2.0",
+    "@types/js-yaml": "^4.0.0",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.22",
+    "@types/node-fetch": "^2.5.8",
+    "@types/semver": "^7.3.4",
+    "@vercel/ncc": "^0.27.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
