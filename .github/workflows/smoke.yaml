@@ -1,11 +1,11 @@
-name: 🧪
+name: 🚬 Test
 
 on:
   push:
 
 jobs:
   build:
-    name: 🛠
+    name: 🛠 Build
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
           path: ./dist
 
   test-smoke:
-    name: 🔥
+    name: 🔥 Smoke
     runs-on: ubuntu-20.04
     needs:
       - build
@@ -37,11 +37,11 @@ jobs:
         with:
           file: examples/smoke.yaml
         env:
-          DEBUG: '*'
+          DEBUG: "*"
           RUNNER_DEBUG: 1
 
   test-smoke-matrix:
-    name: 🚬
+    name: 🦑 Matrix
     needs:
       - test-smoke
     runs-on: ubuntu-20.04
