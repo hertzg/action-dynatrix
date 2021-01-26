@@ -1,7 +1,7 @@
 version: "1"
 
 matrices:
-  usable-script-1:
+  sample:
     node:
       $use: script
       with:
@@ -15,13 +15,9 @@ matrices:
         script: |
           const ltsVersions = context.versions.body.filter(v => v.lts).map(v => v.version);
           [
-            semver.maxSatisfying(ltsVersions, '10.x'),
             semver.maxSatisfying(ltsVersions, '12.x'),
             semver.maxSatisfying(ltsVersions, '14.x')
           ]
-
-    arch: [amd64, arm64/v8, arm/v7, arm/v6]
     os:
       - macos
       - linux
-      - win
