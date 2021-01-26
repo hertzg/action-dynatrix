@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: 🛠
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -21,7 +21,7 @@ jobs:
 
   test-smoke:
     name: 🔥
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     outputs:
@@ -44,7 +44,7 @@ jobs:
     name: 🚬
     needs:
       - test-smoke
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
