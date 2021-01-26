@@ -36,7 +36,7 @@ jobs:
         with:
           file: examples/smoke.yaml
         env:
-          DEBUG: *
+          DEBUG: '*'
           RUNNER_DEBUG: 1
 
   test-smoke-matrix:
