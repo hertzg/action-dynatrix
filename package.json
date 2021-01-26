@@ -6,13 +6,13 @@
   "license": "MIT",
   "scripts": {
     "start": "ncc run ./src/index.ts",
-    "build:ncc": "ncc build ./src/index.ts --no-cache"
+    "build": "ncc build ./src/index.ts --no-cache"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "ael": "^1.0.1",
+    "debug": "^4.3.1",
     "decoders": "^1.23.3",
-    "jexl": "^2.3.0",
+    "expression-language": "^1.1.4",
     "js-yaml": "^4.0.0",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.7",
-    "@types/jexl": "^2.2.0",
+    "@types/debug": "^4.1.5",
     "@types/js-yaml": "^4.0.0",
     "@types/lodash": "^4.14.168",
     "@types/node": "^14.14.22",

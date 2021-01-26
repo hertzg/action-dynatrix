@@ -1,0 +1,27 @@
+version: "1"
+
+matrices:
+  usable-script-1:
+    node:
+      $use: script
+      with:
+        context:
+          versions:
+            $use: fetch
+            with:
+              method: get
+              url: https://nodejs.org/dist/index.json
+              as: json
+        script: |
+          const ltsVersions = context.versions.body.filter(v => v.lts).map(v => v.version);
+          [
+            semver.maxSatisfying(ltsVersions, '10.x'),
+            semver.maxSatisfying(ltsVersions, '12.x'),
+            semver.maxSatisfying(ltsVersions, '14.x')
+          ]
+
+    arch: [amd64, arm64/v8, arm/v7, arm/v6]
+    os:
+      - macos
+      - linux
+      - win

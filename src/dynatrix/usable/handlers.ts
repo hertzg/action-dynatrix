@@ -1,4 +1,5 @@
 import { UsableHandler } from "./index";
+import { debug } from "../../log";
 
 const errorUnknownUsable = (name: string) =>
   new Error(`Unknown usable: ${name}`);
@@ -43,6 +44,7 @@ export const createHandlerRegistry = (): UsableHandlerRegistry => {
 
   return {
     register: (alias: string | string[], handler: UsableHandler): void => {
+      debug("[HandlerRegistry] register: %s", alias);
       const aliases = Array.isArray(alias) ? alias : [alias];
       aliases.forEach((alias) => map.set(alias, handler));
     },
