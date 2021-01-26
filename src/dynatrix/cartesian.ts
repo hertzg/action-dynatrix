@@ -8,7 +8,7 @@ export const product = <T>(...arrays: Array<T[]>) =>
 export const objectProduct = <T>(object: { [key: string]: T[] }) => {
   const keys = Object.keys(object);
   const values = Object.values(object);
-  return product<T>(...values).map((values) => [
+  return product<T>(...values).flatMap((values) => [
     values.reduce((acc, value, i) => ({ ...acc, [keys[i]]: value }), {} as T),
   ]);
 };
