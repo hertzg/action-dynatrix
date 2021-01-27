@@ -25,7 +25,7 @@ jobs:
     needs:
       - build
     outputs:
-      sample: ${{ steps.generate.outputs.matrices.sample.include }}
+      sample: ${{ fromJSON(steps.generate.outputs.matrices).sample.include }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
@@ -47,7 +47,7 @@ jobs:
   matrix:
     name: 🍸 Sample Job
     needs:
-      - test-smoke
+      - dynatrix
     runs-on: ubuntu-20.04
     strategy:
       matrix:
