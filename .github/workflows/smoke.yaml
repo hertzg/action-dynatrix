@@ -19,36 +19,39 @@ jobs:
           name: dist
           path: ./dist
 
-  test-smoke:
-    name: 🔥 Smoke
+  dynatrix:
+    name: 🦑 dynatrix
     runs-on: ubuntu-20.04
     needs:
       - build
     outputs:
-      matrices: ${{ steps.dynatrix.outputs.matrices }}
+      sample: ${{ steps.generate.outputs.matrices.sample.include }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: dist
           path: ./dist
-      - id: dynatrix
+      - id: generate
         uses: ./
         with:
           file: examples/smoke.yaml
         env:
           DEBUG: "*"
           RUNNER_DEBUG: 1
+      - run: |
+          echo $SAMPLE;
+        env:
+          SAMPLE: ${{ steps.generate.outputs.matrices.sample.include }}
 
-  test-smoke-matrix:
-    name: 🦑 Matrix
+  matrix:
+    name: 🍸 Sample Job
     needs:
       - test-smoke
     runs-on: ubuntu-20.04
     strategy:
-      fail-fast: false
       matrix:
-        include: ${{ fromJSON(needs.test-smoke.outputs.matrices.usable-script-1.include) }}
+        include: ${{ fromJSON(needs.dynatrix.outputs.sample) }}
     steps:
       - run: |
           echo $MATRIX;
