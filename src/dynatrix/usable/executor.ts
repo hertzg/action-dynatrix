@@ -53,9 +53,9 @@ export const creatExecutor = (registry: UsableHandlerRegistry) => {
   };
 
   return {
-    execute: async <TContext = any>(
+    execute: async (
       object: any,
-      userContext?: TContext
+      context: UsableHandlerContext["execution"]
     ): Promise<any> => {
       const target = _.cloneDeep(object);
       const { usables, context: visitorCtx } = extractUsables(target);
@@ -67,10 +67,13 @@ export const creatExecutor = (registry: UsableHandlerRegistry) => {
 
       let usable;
       while ((usable = usables.shift())) {
+        // Why not just use a foreach?
         const { path } = visitorCtx.get(usable);
         const resolved = await resolveUsable(usable, {
-          path,
-          custom: userContext,
+          lexical: {
+            path,
+          },
+          execution: context,
         });
         _.set(target, path, resolved);
       }

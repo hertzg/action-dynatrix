@@ -7,9 +7,13 @@ export interface UsableObject<TWith = any, TName = string> {
   with?: TWith;
 }
 
-export interface UsableHandlerContext<TUser = any> {
-  path: string[];
-  custom?: TUser;
+export interface UsableHandlerContext {
+  lexical:
+    | {
+        path: string[];
+      }
+    | { [key: string]: any };
+  execution: { path: string; cwd: string };
 }
 
 export interface UsableHandler<TResult = any, TWith = any> {
@@ -30,8 +34,8 @@ export const createUsable = () => {
   return {
     execute: async <TResult = unknown>(
       object: unknown,
-      userContext?: any
-    ): Promise<TResult> => executor.execute(object, userContext),
+      context: UsableHandlerContext["execution"]
+    ): Promise<TResult> => executor.execute(object, context),
     plugin: (module: UsablePluginModule) => registerModule(module),
   };
 };

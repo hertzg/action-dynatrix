@@ -13,8 +13,9 @@ matrices:
               url: https://nodejs.org/dist/index.json
               as: json
         script: |
+          const semver = require('semver');
           const ltsVersions = context.versions.body.filter(v => v.lts).map(v => v.version);
-          [
+          return [
             semver.maxSatisfying(ltsVersions, '12.x'),
             semver.maxSatisfying(ltsVersions, '14.x')
           ]

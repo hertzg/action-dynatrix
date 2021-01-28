@@ -50,10 +50,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^14.14.22":
+"@types/node@npm:*":
   version: 14.14.22
   resolution: "@types/node@npm:14.14.22"
   checksum: e46e32685b4d0261779c13c10ba3ff220cfa714b5c12f8f571fd52cc309546bdbc8ffc86cbad20559ad88e7b17e66fc51c98b067d8c3766597092c05df157b9b
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^12.19.15":
+  version: 12.19.15
+  resolution: "@types/node@npm:12.19.15"
+  checksum: 873f273c89dab44232a366b995a642aaed63c6be5ef9939b98f5beffeb301749afecd29c2ebfbd9dab4b10cb8a3c972752e902829e4515b0c9a5a166b895234c
   languageName: node
   linkType: hard
 
@@ -91,7 +98,7 @@ __metadata:
     "@types/debug": ^4.1.5
     "@types/js-yaml": ^4.0.0
     "@types/lodash": ^4.14.168
-    "@types/node": ^14.14.22
+    "@types/node": ^12.19.15
     "@types/node-fetch": ^2.5.8
     "@types/semver": ^7.3.4
     "@vercel/ncc": ^0.27.0
@@ -102,9 +109,9 @@ __metadata:
     lodash: ^4.17.20
     node-fetch: ^2.6.1
     prettier: ^2.2.1
-    semver: ^7.3.4
     ts-node: ^9.1.1
     typescript: ^4.1.3
+    vm2: ^3.9.2
   languageName: unknown
   linkType: soft
 
@@ -945,7 +952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.2, semver@npm:^7.3.4":
+"semver@npm:^7.3.2":
   version: 7.3.4
   resolution: "semver@npm:7.3.4"
   dependencies:
@@ -1170,6 +1177,15 @@ typescript@^4.1.3:
     core-util-is: 1.0.2
     extsprintf: ^1.2.0
   checksum: 38ea80312cb42e5e8b4ac562d108d675b2354a79f8f125d363671f692657461b9181fd26f4fc9acdca433f8afee099cb78058806e1303e6b15b8fb022affba94
+  languageName: node
+  linkType: hard
+
+"vm2@npm:^3.9.2":
+  version: 3.9.2
+  resolution: "vm2@npm:3.9.2"
+  bin:
+    vm2: bin/vm2
+  checksum: 8151b95f1ab459e5491ed241414292ea4473d425d5d53376cdb544c61d26beb7159e20ae43f0606d7ba25a69becb84ce524b81af7565d8d53e9a2dc79dd468aa
   languageName: node
   linkType: hard
 

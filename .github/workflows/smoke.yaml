@@ -32,10 +32,14 @@ jobs:
         with:
           name: dist
           path: ./dist
+      - uses: hertzg/npm-install@master
+        with:
+          useLockFile: false
+          working-directory: examples/smoke/
       - id: generate
         uses: ./
         with:
-          file: examples/smoke.yaml
+          file: examples/smoke/matrix.yaml
         env:
           DEBUG: "*"
           RUNNER_DEBUG: 1

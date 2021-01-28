@@ -42,7 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/debug", "npm:4.1.5"],
             ["@types/js-yaml", "npm:4.0.0"],
             ["@types/lodash", "npm:4.14.168"],
-            ["@types/node", "npm:14.14.22"],
+            ["@types/node", "npm:12.19.15"],
             ["@types/node-fetch", "npm:2.5.8"],
             ["@types/semver", "npm:7.3.4"],
             ["@vercel/ncc", "npm:0.27.0"],
@@ -53,9 +53,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.20"],
             ["node-fetch", "npm:2.6.1"],
             ["prettier", "npm:2.2.1"],
-            ["semver", "npm:7.3.4"],
             ["ts-node", "virtual:4e6b203fb6546ce8990aad5c3352ea948c5901547fb2e6b1838fcd99985975c8c801c84d9227e73a8c65fdc22d1ff097dfc4988d966a8e12e9dba04766e6be95#npm:9.1.1"],
-            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"],
+            ["vm2", "npm:3.9.2"]
           ],
           "linkType": "SOFT",
         }]
@@ -106,6 +106,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
+        ["npm:12.19.15", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-12.19.15-2896ef5223-873f273c89.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:12.19.15"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:14.14.22", {
           "packageLocation": "./.yarn/cache/@types-node-npm-14.14.22-fe4ed4ddc2-e46e32685b.zip/node_modules/@types/node/",
           "packageDependencies": [
@@ -163,7 +170,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/debug", "npm:4.1.5"],
             ["@types/js-yaml", "npm:4.0.0"],
             ["@types/lodash", "npm:4.14.168"],
-            ["@types/node", "npm:14.14.22"],
+            ["@types/node", "npm:12.19.15"],
             ["@types/node-fetch", "npm:2.5.8"],
             ["@types/semver", "npm:7.3.4"],
             ["@vercel/ncc", "npm:0.27.0"],
@@ -174,9 +181,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.20"],
             ["node-fetch", "npm:2.6.1"],
             ["prettier", "npm:2.2.1"],
-            ["semver", "npm:7.3.4"],
             ["ts-node", "virtual:4e6b203fb6546ce8990aad5c3352ea948c5901547fb2e6b1838fcd99985975c8c801c84d9227e73a8c65fdc22d1ff097dfc4988d966a8e12e9dba04766e6be95#npm:9.1.1"],
-            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"],
+            ["vm2", "npm:3.9.2"]
           ],
           "linkType": "SOFT",
         }]
@@ -1399,6 +1406,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["assert-plus", "npm:1.0.0"],
             ["core-util-is", "npm:1.0.2"],
             ["extsprintf", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["vm2", [
+        ["npm:3.9.2", {
+          "packageLocation": "./.yarn/cache/vm2-npm-3.9.2-c8d69893b7-8151b95f1a.zip/node_modules/vm2/",
+          "packageDependencies": [
+            ["vm2", "npm:3.9.2"]
           ],
           "linkType": "HARD",
         }]
