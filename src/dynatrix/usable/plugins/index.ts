@@ -1,5 +1,6 @@
 import { UsableHandler, UsableHandlerRegistry } from "../index";
 import * as internalPlugins from "./internal";
+import { debug } from "../../../log";
 
 export interface UsablePlugin<TResult, TWith> {
   name: string;
@@ -24,7 +25,10 @@ export const createPluginLoader = (registry: UsableHandlerRegistry) => {
 
   const registerPlugin = <TReturn, TWith>(
     plugin: UsablePlugin<TReturn, TWith>
-  ) => registry.register(plugin.name, plugin.handler);
+  ) => {
+    debug("[PluginLoader] register: %s", plugin.name);
+    registry.register(plugin.name, plugin.handler);
+  };
 
   const registerPlugins = (plugins: UsablePlugin<any, any>[]) =>
     plugins.forEach((plugin) => registerPlugin(plugin));

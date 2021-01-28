@@ -1,0 +1,63 @@
+name: 🚬 Test
+
+on:
+  push:
+
+jobs:
+  build:
+    name: 🛠 Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          check-latest: true
+          node-version: "12"
+      - run: yarn build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist
+
+  dynatrix:
+    name: 🦑 dynatrix
+    runs-on: ubuntu-20.04
+    needs:
+      - build
+    outputs:
+      sample: ${{ fromJSON(steps.generate.outputs.matrices).sample.include }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: ./dist
+      - uses: hertzg/npm-install@master
+        with:
+          useLockFile: false
+          working-directory: examples/smoke/
+      - id: generate
+        uses: ./
+        with:
+          file: examples/smoke/matrix.yaml
+        env:
+          DEBUG: "*"
+          RUNNER_DEBUG: 1
+      - run: |
+          echo $SAMPLE;
+        env:
+          SAMPLE: ${{ steps.generate.outputs.matrices.sample.include }}
+
+  matrix:
+    name: 🍸 Sample Job
+    needs:
+      - dynatrix
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        include: ${{ fromJSON(needs.dynatrix.outputs.sample) }}
+    steps:
+      - run: |
+          echo $MATRIX;
+        env:
+          MATRIX: ${{ toJSON(matrix) }}

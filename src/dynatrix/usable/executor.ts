@@ -5,6 +5,7 @@ import {
 } from "./index";
 import { visitDepthFirst } from "./visitDepthFirst";
 import _ from "lodash";
+import { debug } from "../../log";
 
 const isObject = (obj: any): obj is object =>
   obj !== null && typeof obj === "object";
@@ -41,23 +42,38 @@ export const creatExecutor = (registry: UsableHandlerRegistry) => {
     context: UsableHandlerContext
   ): Promise<any> => {
     const handler = registry.getOrThrow(usable.$use);
-    return handler(usable.with, context);
+    const resolved = await handler(usable.with, context);
+    debug(
+      "[Executor] resolveUsable: resolved %s with %j as %j",
+      usable.$use,
+      usable.with,
+      resolved
+    );
+    return resolved;
   };
 
   return {
-    execute: async <TContext = any>(
+    execute: async (
       object: any,
-      userContext?: TContext
+      context: UsableHandlerContext["execution"]
     ): Promise<any> => {
       const target = _.cloneDeep(object);
       const { usables, context: visitorCtx } = extractUsables(target);
+      debug(
+        "[Executor] execute: extracted %s usables at %j",
+        usables.length,
+        usables.map((usable) => visitorCtx.get(usable).path.join("."))
+      );
 
       let usable;
       while ((usable = usables.shift())) {
+        // Why not just use a foreach?
         const { path } = visitorCtx.get(usable);
         const resolved = await resolveUsable(usable, {
-          path,
-          custom: userContext,
+          lexical: {
+            path,
+          },
+          execution: context,
         });
         _.set(target, path, resolved);
       }
